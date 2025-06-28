@@ -19,15 +19,22 @@ const Register = () => {
     setFormValues({ ...formValues, [e.target.id]: e.target.value })
   }
 
+  const [error, setError] = useState('')
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await RegisterUser({
-      name: formValues.name,
-      email: formValues.email,
-      password: formValues.password
-    })
-    setFormValues(initialState)
-    navigate('/signin')
+    setError('')
+    try {
+      await RegisterUser({
+        name: formValues.name,
+        email: formValues.email,
+        password: formValues.password
+      })
+      setFormValues(initialState)
+      navigate('/signin')
+    } catch (err) {
+      setError(err.message || 'Registration failed.')
+    }
   }
 
   return (
@@ -79,11 +86,12 @@ const Register = () => {
           />
         </div>
         <button
-          disabled={
-            !formValues.email ||
-            (!formValues.password &&
-              formValues.password === formValues.confirmPassword)
-          }
+        disabled={
+          !formValues.email ||
+          !formValues.password ||
+          !formValues.confirmPassword ||
+          formValues.password !== formValues.confirmPassword
+        }
         >
           Register
         </button>
