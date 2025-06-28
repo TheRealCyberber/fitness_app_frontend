@@ -9,12 +9,6 @@ const Home = () => {
     alt="Fitness Tracking App"
     style={{ width: '100%', maxWidth: '800px', borderRadius: '12px', marginTop: '20px' }}
   id="welcome" />
-
-      <section className="welcome-signin">
-        <button onClick={() => navigate('/signin')}>
-          Click Here To Get Started
-        </button>
-      </section>
     </div>
   )
 }
