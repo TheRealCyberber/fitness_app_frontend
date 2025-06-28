@@ -6,8 +6,8 @@ const Nav = ({ user, handleLogOut }) => {
   if (user) {
     userOptions = (
       <nav>
+        <Link to="/dashboard">Dashboard</Link>
         <h3>Welcome {user.name}!</h3>
-        <Link to="/feed">Feed</Link>
         <Link onClick={handleLogOut} to="/">
           Sign Out
         </Link>
