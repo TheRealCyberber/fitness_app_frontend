@@ -5,6 +5,9 @@ import Nav from './components/Nav'
 import Register from './pages/Register'
 import SignIn from './pages/SignIn'
 import Home from './pages/Home'
+import Dashboard from './components/dashboard/Dashboard'
+import WorkoutList from './components/workout/WorkoutList'
+import ProgressList from './components/progress/ProgressList'
 import './App.css'
 
 const App = () => {
@@ -36,6 +39,9 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/workouts" element={<WorkoutList />} />
+          <Route path="/progress" element={<ProgressList />} />
         </Routes>
       </main>
     </>
