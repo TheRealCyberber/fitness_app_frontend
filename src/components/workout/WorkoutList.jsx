@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react'
 import { GetWorkouts, DeleteWorkout, UpdateWorkout } from '../../services/workout'
+import WorkoutForm from './WorkoutForm'
 
 const WorkoutList = () => {
   const [workouts, setWorkouts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [editingId, setEditingId] = useState(null)
+  const [editName, setEditName] = useState('')
+  const [editDate, setEditDate] = useState('')
 
   useEffect(() => {
     const fetchWorkouts = async () => {
