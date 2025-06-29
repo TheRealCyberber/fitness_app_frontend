@@ -30,4 +30,8 @@ export const CheckSession = async () => {
   }
 }
 
+// added signout function
+export const SignOutUser = () => {
+  localStorage.removeItem('token') 
+}
 

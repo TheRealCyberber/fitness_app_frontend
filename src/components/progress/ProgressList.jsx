@@ -1,16 +1,17 @@
 import ProgressForm from './ProgressForm'
 import { useEffect, useState } from 'react'
-import { GetProgress, DeleteProgress, UpdateProgress } from '../../services/progress'
+import { GetProgress, AddProgress, DeleteProgress, UpdateProgress } from '../../services/progress'
 
 const ProgressList = () => {
   const [progress, setProgress] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [editingId, setEditingId] = useState(null)
-  const [editDate, setEditDate] = useState('')
+  const [editingValues, setEditingValues] = useState({ date: '', weight: '', latestChange: '', notes: '' }) 
+  /* const [editDate, setEditDate] = useState('')
   const [editWeight, setEditWeight] = useState('')
   const [editLatestChange, setEditLatestChange] = useState('')
-  const [editNotes, setEditNotes] = useState('')
+  const [editNotes, setEditNotes] = useState('') */
 
   useEffect(() => {
     const fetchProgress = async () => {
@@ -27,9 +28,18 @@ const ProgressList = () => {
   }, [])
 
   // Use ProgressForm for adding new entries
-  const handleAdd = (newEntry) => {
+  /* const handleAdd = (newEntry) => {
     setProgress([...progress, newEntry])
-  }
+  } */
+
+    const handleAdd = async (values) => { 
+      try {
+        const newEntry = await AddProgress(values) 
+        setProgress((prev) => [...prev, newEntry])
+      } catch {
+        alert('Failed to add progress')
+      }
+    }
 
   const handleDelete = async (id) => {
     try {
@@ -42,84 +52,74 @@ const ProgressList = () => {
 
   const handleEdit = (entry) => {
     setEditingId(entry.id || entry._id)
-    setEditDate(entry.date)
-    setEditWeight(entry.weight)
-    setEditLatestChange(entry.latestChange)
-    setEditNotes(entry.notes || '')
-  }
+    setEditingValues({
+      date: entry.date,
+      weight: entry.weight,
+      latestChange: entry.latestChange,
+      notes: entry.notes || ''
+  })
+}
 
-  const handleEditSubmit = async (e) => {
+  /* const handleEditSubmit = async (e) => {
     e.preventDefault()
     try {
-      const updated = await UpdateProgress(editingId, { date: editDate, weight: editWeight, latestChange: editLatestChange, notes: editNotes })
+      const updated = await UpdateProgress(editingId, values)
       setProgress((prev) =>
         prev.map((p) => (p.id || p._id) === editingId ? updated : p)
       )
       setEditingId(null)
-      setEditDate('')
-      setEditWeight('')
-      setEditLatestChange('')
-      setEditNotes('')
+      setEditingValues({ date: '', weight: '', latestChange: '', notes: '' })
     } catch {
       alert('Failed to update progress')
     }
-  }
+  } */
+
+    const handleEditSubmit = async (values) => {
+      try {
+        const updated = await UpdateProgress(editingId, values)
+        setProgress((prev) =>
+          prev.map((p) => (p.id || p._id) === editingId ? updated : p)
+        )
+        setEditingId(null)
+        setEditingValues({ date: '', weight: '', latestChange: '', notes: '' })
+      } catch {
+        alert('Failed to update progress')
+      }
+    }
 
   const handleCancelEdit = () => {
     setEditingId(null)
-    setEditDate('')
-    setEditWeight('')
-    setEditLatestChange('')
-    setEditNotes('')
+    setEditingValues({ date: '', weight: '', latestChange: '', notes: '' })
   }
 
   return (
     <div>
-      <h2>My Progress</h2>
-      {!editingId && (
-        <ProgressForm onAdd={handleAdd} />
-      )}
-      {editingId && (
-        <form onSubmit={handleEditSubmit}>
-          <input
-            type="date"
-            value={editDate}
-            onChange={(e) => setEditDate(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Current Weight"
-            value={editWeight}
-            onChange={(e) => setEditWeight(e.target.value)}
-          />
-          <input
-            type="number"
-            placeholder="Latest Change"
-            value={editLatestChange}
-            onChange={(e) => setEditLatestChange(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Notes (optional)"
-            value={editNotes}
-            onChange={(e) => setEditNotes(e.target.value)}
-          />
-          <button type="submit">Update</button>
-          <button type="button" onClick={handleCancelEdit}>Cancel</button>
-        </form>
-      )}
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      <ul>
-        {progress.map((entry) => (
-          <li key={entry.id || entry._id}>
-            {new Date(entry.date).toLocaleDateString()}: Weight: {entry.weight}, Change: {entry.latestChange}, Notes: {entry.notes}
-            <button onClick={() => handleEdit(entry)}>Edit</button>
-            <button onClick={() => handleDelete(entry.id || entry._id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <h2>My Progress</h2>
+    {!editingId && (
+      <ProgressForm onSubmit={handleAdd} /> 
+    )}
+    {editingId && (
+      <div>
+        <ProgressForm
+          onSubmit={handleEditSubmit}
+          initialValues={editingValues} 
+          submitLabel="Update" 
+        />
+        <button type="button" onClick={handleCancelEdit}>Cancel</button> 
+      </div>
+    )}
+    {loading && <p>Loading...</p>}
+    {error && <p>{error}</p>}
+    <ul>
+      {progress.map((entry) => (
+        <li key={entry.id || entry._id}>
+          {new Date(entry.date).toLocaleDateString()}: Weight: {entry.weight}, Latest Weight: {entry.latestChange}, Notes: {entry.notes}
+          <button onClick={() => handleEdit(entry)}>Edit</button>
+          <button onClick={() => handleDelete(entry.id || entry._id)}>Delete</button>
+        </li>
+      ))}
+    </ul>
+  </div>
   )
 }
 
