@@ -11,12 +11,7 @@ export const GetProgress = async () => {
 
 export const AddProgress = async (data) => {
   try {
-    const token = localStorage.getItem('token')
-    const res = await Client.post('/progress', data, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
+    const res = await Client.post('/progress', data)
     return res.data
   } catch (error) {
     throw error

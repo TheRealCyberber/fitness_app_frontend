@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import { AddWorkout } from '../../services/workout'
+import { useState, useEffect } from 'react'
+
+const WorkoutForm = ({
+  onSubmit, 
+  initialValues = { name: '', date: '', type: '', duration: '', calories: '' },  
+  submitLabel = 'Add' 
+}) => {
+  const [name, setName] = useState(initialValues.name) 
+  const [date, setDate] = useState(initialValues.date) 
+  const [type, setType] = useState(initialValues.type) 
+  const [duration, setDuration] = useState(initialValues.duration) 
+  const [calories, setCalories] = useState(initialValues.calories) 
 
 
-const WorkoutForm = ({ onAdd }) => {
-  const [name, setName] = useState('')
-  const [date, setDate] = useState('')
-  const [type, setType] = useState('')
-  const [duration, setDuration] = useState('')
-  const [calories, setCalories] = useState('')
+  useEffect(() => {
+    setName(initialValues.name)
+    setDate(initialValues.date)
+    setType(initialValues.type)
+    setDuration(initialValues.duration)
+    setCalories(initialValues.calories)
+  }, [initialValues]) 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!name || !date || !type || !duration || !calories) return
-    try {
-      const newWorkout = await AddWorkout({ name, date, type,
-        duration: Number(duration),
-        calories: Number(calories) })
-      onAdd && onAdd(newWorkout)
+    await onSubmit({ 
+      name,
+      date,
+      type,
+      duration: Number(duration),
+      calories: Number(calories)
+    })
+    if (submitLabel === 'Add') { 
       setName('')
       setDate('')
       setType('')
       setDuration('')
       setCalories('')
-    } catch (err) {
-      alert('Failed to add workout')
     }
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>Add Workout</h3>
+      <h3>{submitLabel} Workout</h3> 
       <input
         type="text"
         placeholder="Workout Name"
@@ -59,7 +71,7 @@ const WorkoutForm = ({ onAdd }) => {
         value={calories}
         onChange={(e) => setCalories(e.target.value)}
       />
-      <button type="submit">Add</button>
+      <button type="submit">{submitLabel}</button> 
     </form>
   )
 }
