@@ -18,7 +18,7 @@ const WorkoutForm = ({
     setType(initialValues.type)
     setDuration(initialValues.duration)
     setCalories(initialValues.calories)
-  }, [initialValues]) 
+  }, []) 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -46,7 +46,9 @@ const WorkoutForm = ({
         type="text"
         placeholder="Workout Name"
         value={name}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => {
+          console.log(e.target.value)
+          setName(e.target.value)}}
       />
       <input
         type="date"
