@@ -113,7 +113,7 @@ const ProgressList = () => {
       <ul>
         {progress.map((entry) => (
           <li key={entry.id || entry._id}>
-            {entry.date}: Weight: {entry.weight}, Change: {entry.latestChange}, Notes: {entry.notes}
+            {new Date(entry.date).toLocaleDateString()}: Weight: {entry.weight}, Change: {entry.latestChange}, Notes: {entry.notes}
             <button onClick={() => handleEdit(entry)}>Edit</button>
             <button onClick={() => handleDelete(entry.id || entry._id)}>Delete</button>
           </li>
