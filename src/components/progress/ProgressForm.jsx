@@ -1,13 +1,29 @@
-import { useState } from 'react'
-import { AddProgress } from '../../services/progress'
+import { useState, useEffect } from 'react'
 
-const ProgressForm = ({ onAdd }) => {
+/* const ProgressForm = ({ onAdd }) => {
   const [date, setDate] = useState('')
   const [weight, setWeight] = useState('')
   const [latestChange, setLatestChange] = useState('')
-  const [notes, setNotes] = useState('')
+  const [notes, setNotes] = useState('') */
 
-  const handleSubmit = async (e) => {
+  const ProgressForm = ({
+    onSubmit, 
+    initialValues = { date: '', weight: '', latestChange: '', notes: '' }, 
+    submitLabel = 'Add' 
+  }) => {
+  const [date, setDate] = useState(initialValues.date) 
+  const [weight, setWeight] = useState(initialValues.weight) 
+  const [latestChange, setLatestChange] = useState(initialValues.latestChange) 
+  const [notes, setNotes] = useState(initialValues.notes)
+
+  useEffect(() => {
+    setDate(initialValues.date)
+    setWeight(initialValues.weight)
+    setLatestChange(initialValues.latestChange)
+    setNotes(initialValues.notes)
+  }, [initialValues])
+
+  /* const handleSubmit = async (e) => {
     e.preventDefault()
     if (!date || !weight || !latestChange) return
     try {
@@ -20,11 +36,24 @@ const ProgressForm = ({ onAdd }) => {
     } catch (err) {
       alert('Failed to add progress')
     }
-  }
+  } */
+
+    const handleSubmit = async (e) => {
+      e.preventDefault()
+      if (!date || !weight || !latestChange) return
+      await onSubmit({ date, weight, latestChange, notes }) 
+      if (submitLabel === 'Add') { 
+        setDate('')
+        setWeight('')
+        setLatestChange('')
+        setNotes('')
+      }
+    }
+  
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>Add Progress</h3>
+      <h3>{submitLabel} Progress</h3>
       <input
         type="date"
         value={date}
@@ -32,13 +61,13 @@ const ProgressForm = ({ onAdd }) => {
       />
       <input
         type="number"
-        placeholder="Current Weight"
+        placeholder="Current Weight in KG"
         value={weight}
         onChange={(e) => setWeight(e.target.value)}
       />
       <input
         type="number"
-        placeholder="Latest Change"
+        placeholder="Previous Weight"
         value={latestChange}
         onChange={(e) => setLatestChange(e.target.value)}
       />
@@ -48,7 +77,7 @@ const ProgressForm = ({ onAdd }) => {
         value={notes}
         onChange={(e) => setNotes(e.target.value)}
       />
-      <button type="submit">Add</button>
+      <button type="submit">{submitLabel}</button>
     </form>
   )
 }
