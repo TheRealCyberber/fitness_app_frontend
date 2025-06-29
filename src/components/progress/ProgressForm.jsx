@@ -21,7 +21,7 @@ import { useState, useEffect } from 'react'
     setWeight(initialValues.weight)
     setLatestChange(initialValues.latestChange)
     setNotes(initialValues.notes)
-  }, [initialValues])
+  }, [])
 
   /* const handleSubmit = async (e) => {
     e.preventDefault()

@@ -7,6 +7,7 @@ const SignIn = ({ setUser }) => {
   const initialState = { email: '', password: '' }
 
   const [formValues, setFormValues] = useState(initialState)
+  const [error, setError] = useState('')
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.id]: e.target.value })
@@ -14,10 +15,15 @@ const SignIn = ({ setUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    try {
     const payload = await SignInUser(formValues)
     setFormValues(initialState)
     setUser(payload)
     navigate('/dashboard')
+    } catch (err) {
+      console.error('SignIn Error:', err.response?.data?.msg || err.message)
+      setError(err.response?.data?.msg || 'Login failed. Try again.')
+    }
   }
 
   return (
@@ -49,6 +55,8 @@ const SignIn = ({ setUser }) => {
         <button disabled={!formValues.email || !formValues.password}>
           Sign In
         </button>
+        {error && <p className="error">{error}</p>}
+
       </form>
     </div>
   )
