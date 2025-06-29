@@ -96,7 +96,7 @@ const WorkoutList = () => {
     <ul>
       {workouts.map((workout) => (
         <li key={workout.id || workout._id}>
-          {workout.name} - {workout.date}
+          {new Date(workout.date).toLocaleDateString()}  Name: {workout.name}, Type: {workout.type}, Duration: {workout.duration}, Calories Burned: {workout.calories}
           <button onClick={() => handleEdit(workout)}>Edit</button>
           <button onClick={() => handleDelete(workout.id || workout._id)}>
             Delete
