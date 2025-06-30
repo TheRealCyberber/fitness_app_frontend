@@ -10,7 +10,7 @@ const predefinedWorkouts = [
 
 const WorkoutForm = ({
   onSubmit, 
-  initialValues = { name: '', date: '', type: '', duration: '', calories: '' },  
+  initialValues = { name: '', date: '', type: '', duration: '', calories: '' },
   submitLabel = 'Add' 
 }) => {
   const [name, setName] = useState(initialValues.name) 
@@ -70,7 +70,7 @@ const WorkoutForm = ({
       <h3>{submitLabel} Workout</h3> 
 
       <select value={name} onChange={handlePresetChange}>
-      <option value="">Select a predefined workout</option>
+      <option value="">Select a workout or type below</option>
       {predefinedWorkouts.map((workout) => (
       <option key={workout.name} value={workout.name}> {workout.name} </option>
       ))}

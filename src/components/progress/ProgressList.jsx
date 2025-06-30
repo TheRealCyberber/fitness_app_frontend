@@ -32,6 +32,10 @@ const ProgressList = () => {
     setProgress([...progress, newEntry])
   } */
 
+    const previousWeight = progress.length > 0
+    ? progress[progress.length - 1].weight
+    : ''
+
     const handleAdd = async (values) => { 
       try {
         const newEntry = await AddProgress(values) 
@@ -96,7 +100,9 @@ const ProgressList = () => {
     <div>
     <h2>My Progress</h2>
     {!editingId && (
-      <ProgressForm onSubmit={handleAdd} /> 
+      <ProgressForm onSubmit={handleAdd}
+      previousWeight={previousWeight} 
+      /> // added this
     )}
     {editingId && (
       <div>
@@ -111,13 +117,27 @@ const ProgressList = () => {
     {loading && <p>Loading...</p>}
     {error && <p>{error}</p>}
     <ul>
-      {progress.map((entry) => (
-        <li key={entry.id || entry._id}>
-          {new Date(entry.date).toLocaleDateString()}: Weight: {entry.weight}, Latest Weight: {entry.latestChange}, Notes: {entry.notes}
-          <button onClick={() => handleEdit(entry)}>Edit</button>
-          <button onClick={() => handleDelete(entry.id || entry._id)}>Delete</button>
-        </li>
-      ))}
+    {progress.map((entry) => {
+  const diff = entry.weight - entry.latestChange
+  let changeMsg = ''
+  if (diff < 0) {
+    changeMsg = `You lost ${Math.abs(diff)} kg`
+  } else if (diff > 0) {
+    changeMsg = `You gained ${diff} kg`
+  } else {
+    changeMsg = `No change in weight`
+  }
+
+  return (
+    <li key={entry.id || entry._id}>
+      {new Date(entry.date).toLocaleDateString()}: Current Weight: {entry.weight}, Previous Weight: {entry.latestChange}, Notes: {entry.notes}
+      {" "}
+      <strong>{changeMsg}</strong>
+      <button onClick={() => handleEdit(entry)}>Edit</button>
+      <button onClick={() => handleDelete(entry.id || entry._id)}>Delete</button>
+    </li>
+  )
+})}
     </ul>
   </div>
   )

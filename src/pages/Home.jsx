@@ -10,7 +10,7 @@ const Home = ({ user }) => {
       {!user ? (
         <p>
           <Link to="/signin" className="link">Sign in</Link> or
-          <Link to="/register" className="link"> Register</Link> to get started.
+          <Link to="/register" className="link"> register</Link> to get started.
         </p>
       ) : (
         <p>Let's crush your fitness goals, {user.name || 'champ'}! 💪</p>
