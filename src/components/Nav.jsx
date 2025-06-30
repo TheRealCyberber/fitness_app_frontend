@@ -26,7 +26,7 @@ const Nav = ({ user, handleLogOut }) => {
   return (
     <header>
       <Link to="/">
-        <img className="logo" src="/images/logo.png" alt="logo" />
+        <img className="logo" src="https://img.icons8.com/ios-filled/100/ffffff/barbell.png" alt="logo" />
       </Link>
       {user ? userOptions : publicOptions}
     </header>
