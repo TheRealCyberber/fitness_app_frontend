@@ -1,14 +1,20 @@
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const Home = () => {
+const Home = ({ user }) => {
   let navigate = useNavigate()
 
   return (
-    <div className="home">
-      <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?fit=crop&w=1400&q=80"
-    alt="Fitness Tracking App"
-    style={{ width: '100%', maxWidth: '800px', borderRadius: '12px', marginTop: '20px' }}
-  id="welcome" />
+    <div className="welcome-box">
+      <h1>Welcome to Fitnessly</h1>
+      {!user ? (
+        <p>
+          <Link to="/signin" className="link">Sign in</Link> or
+          <Link to="/register" className="link"> Register</Link> to get started.
+        </p>
+      ) : (
+        <p>Let's crush your fitness goals, {user.name || 'champ'}! 💪</p>
+      )}
     </div>
   )
 }

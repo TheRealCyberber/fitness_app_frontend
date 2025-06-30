@@ -39,7 +39,7 @@ const Register = () => {
 
   return (
     <div className="col register">
-      <img src="/images/register.png" alt="Register" />
+      <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <label htmlFor="name">Name</label>
@@ -47,7 +47,7 @@ const Register = () => {
             onChange={handleChange}
             id="name"
             type="text"
-            placeholder="John Doe"
+            placeholder="Ahmed Ali"
             value={formValues.name}
             required
             autoComplete="name"

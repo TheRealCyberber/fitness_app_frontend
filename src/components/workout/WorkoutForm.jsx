@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react'
 
+const predefinedWorkouts = [
+  { name: 'Running', type: 'Cardio', duration: 30, calories: 300 },
+  { name: 'Cycling', type: 'Cardio', duration: 45, calories: 400 },
+  { name: 'Weight Lifting', type: 'Strength', duration: 40, calories: 250 },
+  { name: 'Yoga', type: 'Flexibility', duration: 60, calories: 200 }
+]
+
+
 const WorkoutForm = ({
   onSubmit, 
   initialValues = { name: '', date: '', type: '', duration: '', calories: '' },  
@@ -19,6 +27,24 @@ const WorkoutForm = ({
     setDuration(initialValues.duration)
     setCalories(initialValues.calories)
   }, []) 
+
+  const handlePresetChange = (e) => {
+    const selectedName = e.target.value
+    const selected = predefinedWorkouts.find((w) => w.name === selectedName)
+    
+    if (selected) {
+      setName(selected.name)
+      setType(selected.type)
+      setDuration(selected.duration.toString())
+      setCalories(selected.calories.toString())
+    } else {
+      setName('')
+      setType('')
+      setDuration('')
+      setCalories('')
+      setDate('')
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -42,6 +68,14 @@ const WorkoutForm = ({
   return (
     <form onSubmit={handleSubmit}>
       <h3>{submitLabel} Workout</h3> 
+
+      <select value={name} onChange={handlePresetChange}>
+      <option value="">Select a predefined workout</option>
+      {predefinedWorkouts.map((workout) => (
+      <option key={workout.name} value={workout.name}> {workout.name} </option>
+      ))}
+      </select>
+
       <input
         type="text"
         placeholder="Workout Name"
