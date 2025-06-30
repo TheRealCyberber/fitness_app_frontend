@@ -1,34 +1,64 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 const Nav = ({ user, handleLogOut }) => {
-  let userOptions
+  const [weather, setWeather] = useState(null)
 
-  if (user) {
-    userOptions = (
-      <nav>
-        <Link to="/dashboard">Dashboard</Link>
-        <h3>Welcome {user.name}!</h3>
-        <Link onClick={handleLogOut} to="/">
-          Sign Out
-        </Link>
-      </nav>
-    )
-  }
+  useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        const res = await fetch(
+          'https://api.open-meteo.com/v1/forecast?latitude=26.2&longitude=50.6&daily=temperature_2m_max,temperature_2m_min&timezone=auto'
+        )
+        const data = await res.json()
+        setWeather({
+          max: data.daily.temperature_2m_max[0],
+          min: data.daily.temperature_2m_min[0],
+        })
+      } catch (err) {
+        console.error('Weather fetch error:', err)
+      }
+    }
 
-  const publicOptions = (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/register">Register</Link>
-      <Link to="/signin">Sign In</Link>
-    </nav>
-  )
+    fetchWeather()
+  }, [])
 
   return (
-    <header>
-      <Link to="/">
-        <img className="logo" src="https://img.icons8.com/ios-filled/100/ffffff/barbell.png" alt="logo" />
-      </Link>
-      {user ? userOptions : publicOptions}
+    <header className="navbar">
+      <div className="nav-left">
+        <Link to="/" className="nav-logo">
+          <img
+            className="logo"
+            src="https://img.icons8.com/ios-filled/100/ffffff/barbell.png"
+            alt="logo"
+          />
+        </Link>
+        {user && <Link to="/dashboard" className="dashboard-link">Dashboard</Link>}
+      </div>
+
+      <div className="nav-center">{/* optional */}</div>
+
+      <div className="nav-right">
+        {user ? (
+          <>
+            <span className="welcome-text">Welcome {user.name}!</span>
+            <Link onClick={handleLogOut} to="/" className="signout-link">
+              Sign Out
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/" className="signout-link">Home </Link>
+            <Link to="/register" className="signout-link">Register</Link>
+            <Link to="/signin" className="signout-link">Sign In</Link>
+          </>
+        )}
+        {weather && (
+          <div className="weather">
+            🌤️ {weather.max}° / {weather.min}°
+          </div>
+        )}
+      </div>
     </header>
   )
 }
