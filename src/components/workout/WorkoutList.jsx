@@ -110,17 +110,19 @@ const WorkoutList = () => {
       )}
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      <ul>
-        {workouts.map((workout) => (
-          <li key={workout.id || workout._id}>
-            {new Date(workout.date).toLocaleDateString()}  Name: {workout.name}, Type: {workout.type}, Duration: {workout.duration}, Calories Burned: {workout.calories}
-            <button onClick={() => handleEdit(workout)}>Edit</button>
-            <button onClick={() => handleDelete(workout.id || workout._id)}>
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className="workout-list">
+  {workouts.map((workout) => (
+    <div className="workout-card" key={workout._id || workout.id}>
+      <div><strong>Date:</strong> {new Date(workout.date).toLocaleDateString()}</div>
+      <div><strong>Name:</strong> {workout.name}</div>
+      <div><strong>Type:</strong> {workout.type}</div>
+      <div><strong>Duration:</strong> {workout.duration} mins</div>
+      <div><strong>Calories:</strong> {workout.calories}</div>
+      <button onClick={() => handleEdit(workout)}>Edit</button>
+      <button onClick={() => handleDelete(workout._id || workout.id)}>Delete</button>
+    </div>
+  ))}
+    </div>
     </div>
   )
 }
