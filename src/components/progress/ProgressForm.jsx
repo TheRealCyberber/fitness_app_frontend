@@ -8,7 +8,8 @@ import { useState, useEffect } from 'react'
 
   const ProgressForm = ({
     onSubmit, 
-    initialValues = { date: '', weight: '', latestChange: '', notes: '' }, 
+    initialValues = { date: '', weight: '', latestChange: '', notes: '' },
+    previousWeight = '', // added this
     submitLabel = 'Add' 
   }) => {
   const [date, setDate] = useState(initialValues.date) 
@@ -40,8 +41,8 @@ import { useState, useEffect } from 'react'
 
     const handleSubmit = async (e) => {
       e.preventDefault()
-      if (!date || !weight || !latestChange) return
-      await onSubmit({ date, weight, latestChange, notes }) 
+      if (!date || !weight) return
+      await onSubmit({ date, weight, latestChange: previousWeight, notes }) // added this
       if (submitLabel === 'Add') { 
         setDate('')
         setWeight('')
@@ -59,17 +60,16 @@ import { useState, useEffect } from 'react'
         value={date}
         onChange={(e) => setDate(e.target.value)}
       />
+      {previousWeight && (
+        <div style={{ marginBottom:8, color: 'gray' }}>
+          Your last weight was: <b>{previousWeight} kg</b>
+          </div>
+      )}
       <input
         type="number"
         placeholder="Current Weight in KG"
         value={weight}
         onChange={(e) => setWeight(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Previous Weight"
-        value={latestChange}
-        onChange={(e) => setLatestChange(e.target.value)}
       />
       <input
         type="text"
