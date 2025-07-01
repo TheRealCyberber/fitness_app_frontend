@@ -121,7 +121,7 @@ const ProgressList = () => {
     {error && <p>{error}</p>}
     {latestEntry && (
         <div>
-          <h3>Latest Progress Entry</h3>
+          <h3>Latest Progress</h3>
           <p>
             Date: {new Date(latestEntry.date).toLocaleDateString()}<br />
             Current Weight: {latestEntry.weight} kg<br />
