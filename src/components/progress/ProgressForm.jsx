@@ -1,11 +1,5 @@
 import { useState, useEffect } from 'react'
 
-/* const ProgressForm = ({ onAdd }) => {
-  const [date, setDate] = useState('')
-  const [weight, setWeight] = useState('')
-  const [latestChange, setLatestChange] = useState('')
-  const [notes, setNotes] = useState('') */
-
   const ProgressForm = ({
     onSubmit, 
     initialValues = { date: '', weight: '', latestChange: '', notes: '' },
@@ -23,21 +17,6 @@ import { useState, useEffect } from 'react'
     setLatestChange(initialValues.latestChange)
     setNotes(initialValues.notes)
   }, [])
-
-  /* const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (!date || !weight || !latestChange) return
-    try {
-      const newEntry = await AddProgress({ date, weight, latestChange, notes })
-      onAdd && onAdd(newEntry)
-      setDate('')
-      setWeight('')
-      setLatestChange('')
-      setNotes('')
-    } catch (err) {
-      alert('Failed to add progress')
-    }
-  } */
 
     const handleSubmit = async (e) => {
       e.preventDefault()
