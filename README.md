@@ -17,11 +17,12 @@ Track your workouts, log your weight changes, visualize progress, and stay motiv
 ## 👤 Developed By:
 
 **Shafi Albalushi**
-**Shahlaa Badawy**
 
 - Email: shafi.albalushi@gmail.com
 - GitHub: github.com/TheRealCyberber
 - LinkedIn: linkedin.com/in/shafi-albalushi
+
+**Shahlaa Badawy**
 
 - Email: shahlaa.ah@gmail.com
 - GitHub: github.com/ShahlaaBee
