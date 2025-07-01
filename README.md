@@ -1,12 +1,92 @@
-# React + Vite
+# 🏋️‍♂️ Fitnessly
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to Fitnessly, your ultimate personal fitness tracker and progress dashboard.
 
-Currently, two official plugins are available:
+Track your workouts, log your weight changes, visualize progress, and stay motivated — all in one place. This full-stack MERN app was built to streamline your fitness journey and make healthy habits stick.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🔗 Deployed Site
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🌐 Live App: [https://fitnessly-app.netlify.app](https://fitnessly-app.netlify.app)  
+🚀 Backend API: [https://fitnessly-api.onrender.com](https://fitnessly-api.onrender.com)
+
+
+---
+
+## 👤 Developed By
+
+**Shafi Albalushi**
+**Shahla Badawi**
+
+- Email: shafi.albalushi@gmail.com
+- GitHub: github.com/TheRealCyberber
+- LinkedIn: linkedin.com/in/shafi-albalushi
+
+---
+
+## Description
+
+Fitnessly is a fitness companion that allows users to:
+
+- 🏃‍♂️ Add & edit workouts with type, duration, and calories burned
+- 📅 Log weight progress and notes per day
+- 📊 View progress history 
+- 🧠 Choose from predefined workouts or enter custom ones
+- 🌦️ Get live weather info for your city to plan outdoor activities
+- 🔒 Register & sign in securely with authentication
+- 🎯 Track performance with a clean, dashboard-style UI
+
+---
+
+## 🛠 Technologies Used
+
+### Frontend
+
+- React.js (Hooks + Router)
+- CSS Flexbox + Grid
+
+
+### 🔧 Backend
+
+- Node.js + Express.js
+- MongoDB + Mongoose
+- JWT Authentication
+- RESTful API
+- Render.com Deployment
+
+### 🧰 Tools
+
+- Open-Meteo API (weather)
+
+---
+
+## 🚀 Getting Started
+
+### Deployed App  
+> [Fitnessly on Render](url)
+
+### Planning Docs  
+- [**Component Hierarchy**](url)  
+- [**ERD**](url)
+
+## Screenshot
+
+![Screenshot 1](./images/  
+![Screenshot 2](./images/)
+![Screenshot 3](./images/)
+![Screenshot 4](./images/)
+
+## Future Updates
+
+🤝 Social login with Google/Facebook
+🧠 AI-based workout suggestions (OpenAI API)
+🗓 Calendar view of workout history
+📸 Upload profile picture and progress images
+
+## Credits
+
+GA Instructors:
+- Michael Lackey
+- Mahmoud Ebrahim
+- Noor Sharaf

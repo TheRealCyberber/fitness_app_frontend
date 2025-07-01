@@ -1,6 +1,7 @@
 import ProgressForm from './ProgressForm'
 import { useEffect, useState } from 'react'
 import { GetProgress, AddProgress, DeleteProgress, UpdateProgress } from '../../services/progress'
+import ProgressChart from './ProgressChart'
 
 const ProgressList = () => {
   const [progress, setProgress] = useState([])
@@ -8,10 +9,7 @@ const ProgressList = () => {
   const [error, setError] = useState('')
   const [editingId, setEditingId] = useState(null)
   const [editingValues, setEditingValues] = useState({ date: '', weight: '', latestChange: '', notes: '' }) 
-  /* const [editDate, setEditDate] = useState('')
-  const [editWeight, setEditWeight] = useState('')
-  const [editLatestChange, setEditLatestChange] = useState('')
-  const [editNotes, setEditNotes] = useState('') */
+
 
   useEffect(() => {
     const fetchProgress = async () => {
@@ -26,11 +24,6 @@ const ProgressList = () => {
     }
     fetchProgress()
   }, [])
-
-  // Use ProgressForm for adding new entries
-  /* const handleAdd = (newEntry) => {
-    setProgress([...progress, newEntry])
-  } */
 
     const previousWeight = progress.length > 0
     ? progress[progress.length - 1].weight
@@ -64,19 +57,7 @@ const ProgressList = () => {
   })
 }
 
-  /* const handleEditSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      const updated = await UpdateProgress(editingId, values)
-      setProgress((prev) =>
-        prev.map((p) => (p.id || p._id) === editingId ? updated : p)
-      )
-      setEditingId(null)
-      setEditingValues({ date: '', weight: '', latestChange: '', notes: '' })
-    } catch {
-      alert('Failed to update progress')
-    }
-  } */
+
 
     const handleEditSubmit = async (values) => {
       try {
@@ -100,7 +81,7 @@ const ProgressList = () => {
     const latestEntry = progress.length > 0 ? progress[progress.length - 1] : null
 
   return (
-    <div>
+    <div className='progress-section'>
     <h2>My Progress</h2>
     {!editingId && (
       <ProgressForm onSubmit={handleAdd}
@@ -120,8 +101,8 @@ const ProgressList = () => {
     {loading && <p>Loading...</p>}
     {error && <p>{error}</p>}
     {latestEntry && (
-        <div>
-          <h3>Latest Progress</h3>
+        <div className='progress-card'>
+          <h3>Latest Progress Entry</h3>
           <p>
             Date: {new Date(latestEntry.date).toLocaleDateString()}<br />
             Current Weight: {latestEntry.weight} kg<br />
@@ -142,29 +123,15 @@ const ProgressList = () => {
         </div>
       )}
 
-    {/* <ul>
-    {progress.map((entry) => {
-  const diff = entry.weight - entry.latestChange
-  let changeMsg = ''
-  if (diff < 0) {
-    changeMsg = `You lost ${Math.abs(diff)} kg`
-  } else if (diff > 0) {
-    changeMsg = `You gained ${diff} kg`
-  } else {
-    changeMsg = `No change in weight`
-  }
+  {progress.length > 1 && (
+  <ProgressChart
+    data={progress.map((entry) => ({
+      date: new Date(entry.date).toLocaleDateString(),
+      weight: entry.weight
+    }))}
+  />
+  )}
 
-  return (
-    <li key={entry.id || entry._id}>
-      {new Date(entry.date).toLocaleDateString()}: Current Weight: {entry.weight}, Previous Weight: {entry.latestChange}, Notes: {entry.notes}
-      {" "}
-      <strong>{changeMsg}</strong>
-      <button onClick={() => handleEdit(entry)}>Edit</button>
-      <button onClick={() => handleDelete(entry.id || entry._id)}>Delete</button>
-    </li>
-  )
-})}
-    </ul> */}
   </div>
   )
 }
