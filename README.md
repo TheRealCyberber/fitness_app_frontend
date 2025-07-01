@@ -14,14 +14,18 @@ Track your workouts, log your weight changes, visualize progress, and stay motiv
 
 ---
 
-## 👤 Developed By
+## 👤 Developed By:
 
 **Shafi Albalushi**
-**Shahla Badawi**
+**Shahlaa Badawy**
 
 - Email: shafi.albalushi@gmail.com
 - GitHub: github.com/TheRealCyberber
 - LinkedIn: linkedin.com/in/shafi-albalushi
+
+- Email: shahlaa.ah@gmail.com
+- GitHub: github.com/ShahlaaBee
+- LinkedIn: www.linkedin.com/in/shahlaa-badawy
 
 ---
 
