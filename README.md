@@ -74,6 +74,11 @@ Fitnessly is a fitness companion that allows users to:
 ### Planning Docs  
 - [**Component Hierarchy**](url)  
 - [**ERD**](url)
+- Wireframe:
+<img width="666" alt="Wireframe pt 1" src="https://github.com/user-attachments/assets/cebeb9d8-35c3-49a0-b6ba-de85e7624b50" />
+<img width="686" alt="Wireframe pt 2" src="https://github.com/user-attachments/assets/acab2be2-fddc-44a7-91ce-4d467bf7166f" />
+<img width="666" alt="Wireframe pt 1" src="https://github.com/user-attachments/assets/cebeb9d8-35c3-49a0-b6ba-de85e7624b50" />
+
 
 ## Screenshot
 
