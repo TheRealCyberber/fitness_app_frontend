@@ -96,6 +96,9 @@ const ProgressList = () => {
     setEditingValues({ date: '', weight: '', latestChange: '', notes: '' })
   }
 
+    // I added this to get the most recent progress entry only
+    const latestEntry = progress.length > 0 ? progress[progress.length - 1] : null
+
   return (
     <div>
     <h2>My Progress</h2>
@@ -116,7 +119,30 @@ const ProgressList = () => {
     )}
     {loading && <p>Loading...</p>}
     {error && <p>{error}</p>}
-    <ul>
+    {latestEntry && (
+        <div>
+          <h3>Latest Progress Entry</h3>
+          <p>
+            Date: {new Date(latestEntry.date).toLocaleDateString()}<br />
+            Current Weight: {latestEntry.weight} kg<br />
+            Previous Weight: {latestEntry.latestChange} kg<br />
+            Notes: {latestEntry.notes}
+          </p>
+          <p>
+            <strong>
+              {latestEntry.weight - latestEntry.latestChange < 0
+                ? `You lost ${Math.abs(latestEntry.weight - latestEntry.latestChange)} kg`
+                : latestEntry.weight - latestEntry.latestChange > 0
+                ? `You gained ${latestEntry.weight - latestEntry.latestChange} kg`
+                : 'No change in weight'}
+            </strong>
+          </p>
+          <button onClick={() => handleEdit(latestEntry)}>Edit</button>
+          <button onClick={() => handleDelete(latestEntry.id || latestEntry._id)}>Delete</button>
+        </div>
+      )}
+
+    {/* <ul>
     {progress.map((entry) => {
   const diff = entry.weight - entry.latestChange
   let changeMsg = ''
@@ -138,7 +164,7 @@ const ProgressList = () => {
     </li>
   )
 })}
-    </ul>
+    </ul> */}
   </div>
   )
 }
