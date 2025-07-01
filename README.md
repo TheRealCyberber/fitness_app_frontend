@@ -83,10 +83,12 @@ Fitnessly is a fitness companion that allows users to:
 
 ## Future Updates
 
-🤝 Social login with Google/Facebook
+🤝 Login with social media credential, i.e. Google/Facebook
 🧠 AI-based workout suggestions (OpenAI API)
 🗓 Calendar view of workout history
 📸 Upload profile picture and progress images
+🧠 Automatic calculation of calories based on workout type
+🏃‍♂️ Add daily steps
 
 ## Credits
 
