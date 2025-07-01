@@ -2,16 +2,16 @@ import { Link } from 'react-router-dom'
 
 const Dashboard = () => {
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <p>Welcome to your fitness tracker!</p>
-      <nav>
-        <ul>
-          <li><Link to="/workouts">My Workouts</Link></li>
-          <li><Link to="/progress">My Progress</Link></li>
-        </ul>
-      </nav>
+    <div className="dashboard-container">
+      <h1 className="dashboard-title">Dashboard</h1>
+      <p className="dashboard-subtext">Welcome to your fitness tracker!</p>
+
+      <div className="dashboard-buttons">
+        <Link to="/workouts" className="dashboard-button">My Workouts</Link>
+        <Link to="/progress" className="dashboard-button">My Progress</Link>
+      </div>
     </div>
+
   )
 }
 

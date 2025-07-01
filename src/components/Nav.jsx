@@ -32,11 +32,13 @@ const Nav = ({ user, handleLogOut }) => {
             src="https://img.icons8.com/ios-filled/100/ffffff/barbell.png"
             alt="logo"
           />
+          <span className="app-name">Fitnessly</span>
         </Link>
-        {user && <Link to="/dashboard" className="dashboard-link">Dashboard</Link>}
+
+        {user && <Link to="/dashboard" className="dashboard-link nav-link">Dashboard</Link>}
       </div>
 
-      <div className="nav-center">{/* optional */}</div>
+      
 
       <div className="nav-right">
         {user ? (
