@@ -8,8 +8,8 @@ Track your workouts, log your weight changes, visualize progress, and stay motiv
 
 ## 🔗 Deployed Site
 
-🌐 Live App: [https://fitnessly-app.netlify.app](https://fitnessly-app.netlify.app)  
-🚀 Backend API: [https://fitnessly-api.onrender.com](https://fitnessly-api.onrender.com)
+- Live App: https://fitnessly-app.surge.sh
+- Backend API: 
 
 
 ---
@@ -19,13 +19,13 @@ Track your workouts, log your weight changes, visualize progress, and stay motiv
 **Shafi Albalushi**
 
 - Email: shafi.albalushi@gmail.com
-- GitHub: github.com/TheRealCyberber
-- LinkedIn: linkedin.com/in/shafi-albalushi
+- GitHub: www.github.com/TheRealCyberber
+- LinkedIn: wwww.linkedin.com/in/shafi-albalushi
 
 **Shahlaa Badawy**
 
 - Email: shahlaa.ah@gmail.com
-- GitHub: github.com/ShahlaaBee
+- GitHub: www.github.com/ShahlaaBee
 - LinkedIn: www.linkedin.com/in/shahlaa-badawy
 
 ---
@@ -90,16 +90,16 @@ Fitnessly is a fitness companion that allows users to:
 
 ## Future Updates
 
-🤝 Login with social media credential, i.e. Google/Facebook
-🧠 AI-based workout suggestions (OpenAI API)
-🗓 Calendar view of workout history
-📸 Upload profile picture and progress images
-🧠 Automatic calculation of calories based on workout type
-🏃‍♂️ Add daily steps
+- 🤝 Login with social media credential, i.e. Google/Facebook
+- 🧠 AI-based workout suggestions (OpenAI API)
+- 🗓 Calendar view of workout history
+- 📸 Upload profile picture and progress images
+- 🧠 Automatic calculation of calories based on workout type
+- 🏃‍♂️ Add daily steps
 
 ## Credits
 
-GA Instructors:
+GA Instructors for their continous guidance and unwavering support:
 - Michael Lackey
 - Mahmoud Ebrahim
 - Noor Sharaf
