@@ -20,7 +20,7 @@ Track your workouts, log your weight changes, visualize progress, and stay motiv
 
 - Email: shafi.albalushi@gmail.com
 - GitHub: www.github.com/TheRealCyberber
-- LinkedIn: wwww.linkedin.com/in/shafi-albalushi
+- LinkedIn: www.linkedin.com/in/shafi-albalushi
 
 **Shahlaa Badawy**
 
@@ -69,44 +69,49 @@ Fitnessly is a fitness companion that allows users to:
 ### Planning Docs  
 - [**Component Hierarchy**](./public/images/component%20hierarchy.jpg)  
 - [**ERD**](./public/images/ERD.png)
-- **Wireframe:**
+- **Wireframes:**
 
-+------------------------------------------+
-| TOP NAVIGATION                           |
-| [Logo]          [Dashboard] [Activity] [Goals] [Profile] |
-+------------------------------------------+
-|                                          |
-|  ## Welcome, [User Name]!                |
-|                                          |
-|  --------------------------------------  |
-|                                          |
-|  +---------------------+  +---------------------+
-|  |     **Today's** |  |   **Weekly Stats** |
-|  |     **Activity** |  |                     |
-|  |  -----------------  |  |  - Steps: 8,500/10k |
-|  |  - Steps: 5,230     |  |  - Calories Burned: |
-|  |  - Calories: 450    |  |    3,200/5k         |
-|  |  - Workout: 30 min  |  |  - Active Days: 4/7 |
-|  +---------------------+  +---------------------+
-|                                          |
-|  +-------------------------------------+
-|  |        **Recent Workouts** |
-|  |  ---------------------------------  |
-|  |  - Running (25 min) - Yesterday     |
-|  |  - Strength (45 min) - Monday       |
-|  |  - Yoga (30 min) - Sunday           |
-|  +-------------------------------------+
-|                                          |
-|  +-------------------------------------+
-|  |         **Goals Progress** |
-|  |  ---------------------------------  |
-|  |  - Lose 5 lbs: [ProgressBar 60%]    |
-|  |  - Run 5K: [ProgressBar 80%]        |
-|  +-------------------------------------+
-|                                          |
-|  [Button: Log New Activity]              |
-|                                          |
-+------------------------------------------+
+------------------------------------------------
+| Fitnessly Logo       | Dashboard | Profile | ⌕|
+------------------------------------------------
+|         Weekly Summary Card                   |
+|  Workouts: 4  | Calories: 1500  | Active: 5h  |
+------------------------------------------------
+|                Progress Graph                 |
+|  (Line chart showing weight over last month)  |
+------------------------------------------------
+|             Recent Activity Feed              |
+|  - 07/01: Running - 30 min                    |
+|  - 06/30: Strength Training - 45 min          |
+|  - 06/29: Yoga - 20 min                       |
+------------------------------------------------
+|        Motivational Tip: “Keep crushing it!”  |
+------------------------------------------------
+|  + Add Workout  |  Log Weight  |  Settings    |
+------------------------------------------------
+
+
+------------------------------------------------
+| Fitnessly Logo       | Dashboard | Profile | ⌕ |
+------------------------------------------------
+|                  Log Your Progress             |
+------------------------------------------------
+| Date: [ 07/02/2025 ▼ ]                         |
+| Weight: [____] kg/lbs                          |
+| Body Fat %: [____] (optional)                  |
+| Workout Type: [ Cardio ▼ ]                     |
+| Duration (min): [____]                         |
+| Notes:                                         |
+| [__________________________________________]   |
+|                                                |
+|               [ Log Progress ]                 |
+------------------------------------------------
+|        Last Weight: 80kg on 06/30              |
+|        Last Workout: Strength 45 min           |
+|        Tip: Hydrate well!                      |
+------------------------------------------------
+
+
 
 
 
