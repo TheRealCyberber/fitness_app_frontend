@@ -9,7 +9,7 @@ Track your workouts, log your weight changes, visualize progress, and stay motiv
 ## 🔗 Deployed Site
 
 - Live App: https://fitnessly-app.surge.sh
-- Backend API: 
+- Backend API: https://fitnessly-app.onrender.com
 
 
 ---
@@ -50,7 +50,7 @@ Fitnessly is a fitness companion that allows users to:
 
 - React.js (Hooks + Router)
 - CSS Flexbox + Grid
-
+- Surge Deployment
 
 ### 🔧 Backend
 
@@ -66,27 +66,55 @@ Fitnessly is a fitness companion that allows users to:
 
 ---
 
-## 🚀 Getting Started
-
-### Deployed App  
-> [Fitnessly on Render](url)
-
 ### Planning Docs  
-- [**Component Hierarchy**](url)  
-- [**ERD**](url)
-- Wireframe:
-<img width="666" alt="Wireframe pt 1" src="https://github.com/user-attachments/assets/cebeb9d8-35c3-49a0-b6ba-de85e7624b50" />
-<img width="686" alt="Wireframe pt 2" src="https://github.com/user-attachments/assets/acab2be2-fddc-44a7-91ce-4d467bf7166f" />
-<img width="653" alt="Wireframe pt 3" src="https://github.com/user-attachments/assets/276bba93-4327-49e3-a3e2-e814257325b1" />
+- [**Component Hierarchy**](./public/images/component%20hierarchy.jpg)  
+- [**ERD**](./public/images/ERD.png)
+- **Wireframe:**
+
++------------------------------------------+
+| TOP NAVIGATION                           |
+| [Logo]          [Dashboard] [Activity] [Goals] [Profile] |
++------------------------------------------+
+|                                          |
+|  ## Welcome, [User Name]!                |
+|                                          |
+|  --------------------------------------  |
+|                                          |
+|  +---------------------+  +---------------------+
+|  |     **Today's** |  |   **Weekly Stats** |
+|  |     **Activity** |  |                     |
+|  |  -----------------  |  |  - Steps: 8,500/10k |
+|  |  - Steps: 5,230     |  |  - Calories Burned: |
+|  |  - Calories: 450    |  |    3,200/5k         |
+|  |  - Workout: 30 min  |  |  - Active Days: 4/7 |
+|  +---------------------+  +---------------------+
+|                                          |
+|  +-------------------------------------+
+|  |        **Recent Workouts** |
+|  |  ---------------------------------  |
+|  |  - Running (25 min) - Yesterday     |
+|  |  - Strength (45 min) - Monday       |
+|  |  - Yoga (30 min) - Sunday           |
+|  +-------------------------------------+
+|                                          |
+|  +-------------------------------------+
+|  |         **Goals Progress** |
+|  |  ---------------------------------  |
+|  |  - Lose 5 lbs: [ProgressBar 60%]    |
+|  |  - Run 5K: [ProgressBar 80%]        |
+|  +-------------------------------------+
+|                                          |
+|  [Button: Log New Activity]              |
+|                                          |
++------------------------------------------+
 
 
 
 ## Screenshot
 
-![Screenshot 1](./images/  
-![Screenshot 2](./images/)
-![Screenshot 3](./images/)
-![Screenshot 4](./images/)
+![Screenshot 1](./public/images/screenshot1.png)
+![Screenshot 2](./public/images/screenshot2.png)
+![Screenshot 3](./public/images/screenshot3.png)
 
 ## Future Updates
 
